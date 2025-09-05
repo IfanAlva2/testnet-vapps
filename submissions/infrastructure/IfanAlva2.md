@@ -2,66 +2,87 @@
 
 ## Verification
 ```yaml
-github_username: "your-username"
-discord_id: "123456789012345678"
-timestamp: "2025-01-15"
+github_username: "IfanAlva2"
+discord_id: "780608657356357652"
+timestamp: "2025-09-05"
 ```
 
 ## Developer
-- **Name**: Your Name
-- **GitHub**: @your-username
-- **Discord**: username#1234
-- **Experience**: Brief background
+- **Name**: Ifan Alva
+- **GitHub**: @IfanAlva2
+- **Discord**: Alzion_7
+- **Experience**: Still learning blockchain development but already familiar with smart contracts, backend APIs, and exploring zero-knowledge integrations through testnets and small projects.
 
 ## Project
 
 ### Name & Category
-- **Project**: Your vApp Name
-- **Category**: identity/defi/social/gaming/infrastructure/other
+- **Project**: zkThrottle — ZK-Based API Rate-Limiting
+- **Category**: infrastructure
 
 ### Description
-What problem does your vApp solve? What does it do?
+zkThrottle solves the problem of API abuse and privacy trade-offs in current rate-limiting solutions.
+It provides a system where users can prove, using zero-knowledge proofs, that they have not exceeded their API usage quota (e.g., 100 calls/day) without exposing detailed usage logs.
+API providers can enforce trustless, privacy-preserving rate-limits via the Soundness Layer + Sui, reducing abuse and centralization risks.
 
 ### SL Integration  
-How will you use Soundness Layer? What specific SL features?
+Use Soundness Layer to verify ZK proofs that counter ≤ limit.
+
+Store verification results on Sui smart contracts for API backends to query.
+
+Optionally integrate Walrus for storing usage commitments (counter states) for auditability.
 
 ## Technical
 
 ### Architecture
-High-level system design and approach
+Client → generate ZK proof (counter ≤ limit)
+   ↓
+Soundness Layer → verify proof
+   ↓
+Sui Contract → log valid API calls
+   ↓
+Backend API → serves only if valid flag exists
+   ↓
+Walrus → optional commitment storage
 
 ### Stack
-- **Frontend**: React/Vue/etc
-- **Backend**: Rust/Node.js/Python/etc  
-- **Blockchain**: SL + others
-- **Storage**: Database/WALRUS/IPFS/etc
+- **Frontend**: React (demo UI for developers)
+- **Backend**: Node.js (API gateway), Rust (prover service)
+- **Blockchain**: Soundness Layer + Sui
+- **Storage**: Walrus (commitments), local DB (counters)
 
 ### Features
-1. Core feature 1
-2. Core feature 2  
-3. Core feature 3
+1. ZK proof of API quota compliance.
+2. Trustless verification via Soundness Layer.
+3. Sui contract registry for API call validation.
+4. Optional Walrus audit trail for counter commitments.
 
 ## Timeline
 
 ### PoC (2-4 weeks)
-- [ ] Basic functionality
-- [ ] SL integration
-- [ ] Simple UI
+- [ ] Build simple circuit (counter ≤ N)
+- [ ] Integrate with SL verifier
+- [ ] Deploy basic ThrottleRegistry Move Contract
+- [ ] Demo API backend + simple UI
 
 ### MVP (4-8 weeks)  
-- [ ] Full features
-- [ ] Production ready
-- [ ] User testing
+- [ ] Add Walrus commitments
+- [ ] Release JS SDK (zkthrottle-client)
+- [ ] Expanded Move contract with quota/NFT management
+- [ ] Public test with ≥20 users
 
 ## Innovation
 What makes this unique? Why will people use it?
+First ZK-powered rate-limiting system for APIs.
+Moves away from centralized API key systems and log-based monitoring.
+Practical use-case for developers of AI, DeFi, or any high-demand service needing fair-use access.
+Balances privacy + trustless enforcement.
 
 ## Contact
-Preferred contact method and where you'll share updates.
+Preferred: Discord (alzion_7)
 
 
 **Checklist before submitting:**
-- [ ] All fields completed
-- [ ] GitHub username matches PR author  
-- [ ] SL integration explained
-- [ ] Timeline is realistic
+- [x] All fields completed
+- [x] GitHub username matches PR author  
+- [x] SL integration explained
+- [x] Timeline is realistic
